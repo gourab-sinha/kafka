@@ -46,7 +46,7 @@ public class ProducerDemoKeys {
                         logger.error("Error while producing", e);
                     }
                 }
-            }).get(); // block the .send to make it sync - dont do this in production
+            }); // .get(); // block the .send to make it sync - dont do this in production
         }
 
         // flush data

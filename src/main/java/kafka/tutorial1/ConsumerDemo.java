@@ -25,7 +25,7 @@ public class ConsumerDemo {
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
 
         // create consumer
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
@@ -39,7 +39,7 @@ public class ConsumerDemo {
             for (ConsumerRecord<String, String> record: records) {
                 logger.info("Key: " + record.key() + "\n" +
                             "Value: " + record.value() + "\n" +
-                            "Partition: " + record.offset() + "\n" +
+                            "Partition: " + record.partition() + "\n" +
                             "Offset: " + record.offset() + "\n"
                         );
             }
